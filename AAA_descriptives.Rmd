@@ -50,6 +50,7 @@ victoria_eligibility_two[, "interact_id"] <- apply(victoria_eligibility_two[, "i
 victoria_new_two[, "interact_id"] <- apply(victoria_new_two[, "interact_id"], 1, function(x) as.integer(x))
 
 ## If this doesn't work try bindrows()
+# May not line up (some difference in dfs)
 victoria_merged <- bind_rows(victoria_eligibility, victoria_new, victoria_new_two, victoria_eligibility_two, by = "interact_id") #merging eligibility and health survey together 
 
 victoria_merged_filter <- filter(victoria_merged, transp_bikes_adults >= 0) #filtering for participants who did eligibility but didn't actually complete the health survey
