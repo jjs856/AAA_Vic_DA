@@ -44,8 +44,8 @@ victoria_eligibility[, "interact_id"] <- apply(victoria_eligibility[, "interact_
 victoria_new[, "interact_id"] <- apply(victoria_new[, "interact_id"], 1, function(x) as.integer(x)) #getting both health and eligibility survey to have the same INTERACT ID (one file started with 0101 and the other started with 101)
 
 #Add Wave 2 Data here
-victoria_new_two <- read_csv("~/INTERACT/veritas/health_2vic_main_bfd440e.csv") # victoria health wave two survey
-victoria_eligibility_two <- read_csv("~/INTERACT/veritas/eligibility_2vic_main_bfd440e.csv")# victoria eligibility wave two survey
+victoria_new_two <- read_csv("~/INTERACT/veritas/health_2vic_main_bfd440e.csv") # w2
+victoria_eligibility_two <- read_csv("~/INTERACT/veritas/eligibility_2vic_main_bfd440e.csv")# w2
 victoria_eligibility_two[, "interact_id"] <- apply(victoria_eligibility_two[, "interact_id"], 1, function(x) as.integer(x))
 victoria_new_two[, "interact_id"] <- apply(victoria_new_two[, "interact_id"], 1, function(x) as.integer(x))
 
@@ -60,10 +60,12 @@ victoria_merged_filter <- filter(victoria_merged, transp_bikes_adults >= 0) #fil
 
 ## Reading in SD data with ID's
 ```{r}
-SD_vic_one <- read_csv("victoria_01_top_1min") # read in SD w1 participants
-sd_vic_two <- read_csv("victoria_02_top_1min") # read in SD w2 participants 
+SD_vic_one <- read_csv("~/INTERACT/SenseDoc/victoria_01_top_1min.csv") # read in SD w1 participants
+SD_vic_two <- read_csv("~/INTERACT/SenseDoc/victoria_02_top_1min.csv") # read in SD w2 participants 
 
-SD_vic_all <- full_join(sd_vic_one, sd_vic_two, by = interact_id)
+# This will not work wither
+SD_vic_all <- full_join(SD_vic_one, SD_vic_two, by = "interact_id")
+
 tabyl(SD_vic_all$interact_id)
 ```
 
