@@ -44,6 +44,7 @@ victoria_small_merged_1 <- read_csv("victoria_small_merged_1.csv")
 summary(victoria_small_merged_1$age_calculated, na.rm = TRUE)
 
 sd(victoria_small_merged_1$age_calculated)
+
 ```
 
 ## Age descriptive Statistics for Victoria
